@@ -1,0 +1,54 @@
+<template>
+    <div style="margin: 0 -15px 0 -15px;">
+        <div v-if="editMode">
+            <v-card-title>
+                {{label}}
+            </v-card-title>
+            <v-card-text style="padding:0px; margin:0px;" v-if="value">
+                <div v-if="editMode" style="margin-top:-20px;">
+                    <v-text-field type="number" label="Amount" v-model="value.amount"/>
+                </div>
+                <div v-if="editMode" style="margin-top:-20px;">
+                    <v-text-field label="Currency" v-model="value.currency"/>
+                </div>
+            </v-card-text>
+        </div>
+        <div v-else style="padding:0px 15px 0px 15px;">
+            <v-card
+                color="orange"
+                dark
+                style="padding:5px; font-weight:500; font-size:16px; text-align:center;"> 
+                {{value.amount}}  
+            </v-card>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name:"Money",
+        props: {
+            editMode: Boolean,
+            value : Object,
+            label : String,
+        },
+        created(){
+            if(!this.value) {
+                this.value = {
+                    'amount': 0,
+                    'currency': '',
+                };
+            }
+
+            this.value.amount = this.value.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        watch: {
+            value(newVal) {
+                this.$emit('input', newVal);
+            },
+        },
+    }
+</script>
+
+<style scoped>
+</style>

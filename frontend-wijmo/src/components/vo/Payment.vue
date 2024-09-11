@@ -1,0 +1,48 @@
+<template>
+    <div>
+        <div v-if="editMode" style="margin: 0 -15px 0 -15px;">
+            <v-card-title>
+                {{label}}
+            </v-card-title>
+            <v-card-text>
+                <div style="margin-top:-20px;">
+                    <v-text-field label="결제 유형" v-model="value.paymentType"/>
+                </div>
+                <div style="margin-top:-20px;">
+                    <v-text-field type="number" label="금액" v-model="value.amount"/>
+                </div>
+            </v-card-text>
+        </div>
+        <div v-else>
+            <div>결제 유형 :  {{value.paymentType }}</div>
+            <div>금액 :  {{value.amount }}</div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name:"Payment",
+        props: {
+            editMode: Boolean,
+            value : Object,
+            label : String,
+        },
+        created(){
+            if(!this.value) {
+                this.value = {
+                    'paymentType': '',
+                    'amount': 0,
+                };
+            }
+        },
+        watch: {
+            value(newVal) {
+                this.$emit('input', newVal);
+            },
+        },
+    }
+</script>
+
+<style scoped>
+</style>

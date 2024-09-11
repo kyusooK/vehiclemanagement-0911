@@ -1,0 +1,49 @@
+<template>
+    <div>
+        <div v-if="editMode" style="margin: 0 -15px 0 -15px;">
+            <v-card-title>
+                {{label}}
+            </v-card-title>
+            <v-card-text>
+                <div style="margin-top:-20px;">
+                    <v-text-field :label="label" v-model="value.email"/>
+                </div>
+            </v-card-text>
+        </div>
+        <div v-else>
+            {{value.email }}
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name:"Email",
+        props: {
+            editMode: Boolean,
+            value : Object,
+            label : String,
+        },
+        created(){
+            if(!this.value) {
+                this.value = {
+                    'email': '',
+                };
+            }
+        },
+        watch: {
+            value(newVal) {
+                this.$emit('input', newVal);
+            },
+        },
+    }
+</script>
+
+<style scoped>
+    .address-v-card-title {
+        display: contents;
+    }
+    .address-v-text-field {
+        margin-top:5px;
+    }
+</style>
