@@ -52,26 +52,14 @@
             <wj-flex-grid-column binding="contact" header="연락처" width="2*" :isReadOnly="true" align="center" />
             <wj-flex-grid-column binding="permission" header="권한" width="2*" :isReadOnly="true" align="center" />
             <wj-flex-grid-column binding="isActive" header="사용여부" width="2*" :isReadOnly="true" align="center" />
-            <wj-flex-grid-column binding="userInfoId" header="UserInfoId" width="2*" :isReadOnly="true" align="center">
-                <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">   
-                    <UserInfoId v-model="cell.item.userInfoId" :editMode="editMode"></UserInfoId>
-                </wj-flex-grid-cell-template>
-            </wj-flex-grid-column>
-            <wj-flex-grid-column binding="vehicleInfoId" header="VehicleInfoId" width="2*" :isReadOnly="true" align="center">
-                <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">   
-                    <VehicleInfoId v-model="cell.item.vehicleInfoId" :editMode="editMode"></VehicleInfoId>
-                </wj-flex-grid-cell-template>
-            </wj-flex-grid-column>
             <wj-flex-grid-column binding="vehicleInfoId" header="차량 정보" width="2*" :isReadOnly="true" align="center">
                 <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">   
                     <VehicleInfoId v-model="cell.item.vehicleInfoId" :editMode="editMode"></VehicleInfoId>
-                    {{ cell.item.vehicleName }}
                 </wj-flex-grid-cell-template>
             </wj-flex-grid-column>
             <wj-flex-grid-column binding="userInfoId" header="사용자 정보" width="2*" :isReadOnly="true" align="center">
                 <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">   
                     <UserInfoId v-model="cell.item.userInfoId" :editMode="editMode"></UserInfoId>
-                    {{ cell.item.name }}
                 </wj-flex-grid-cell-template>
             </wj-flex-grid-column>
         </wj-flex-grid>

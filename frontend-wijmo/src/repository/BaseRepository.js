@@ -38,7 +38,7 @@ class BaseRepository{
             let parameter = {
                 params: query.parameters
             }
-
+        
             temp = await this.axios.get(this.axios.fixUrl(`/${query.apiPath}`), parameter);
          }else{
             temp = await this.axios.get(this.axios.fixUrl(`/${this.path}`));
